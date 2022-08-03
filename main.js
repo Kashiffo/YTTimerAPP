@@ -29,8 +29,12 @@ function countDownTimer() {
     seconds.innerText = 59;
     minutes.innerText--;
   }
-  if (minutes.innerText == 24) {
-    onYouTubePlayerAPIReady();
+
+  if (seconds.innerText < 10) {
+    seconds.innerText = `0${seconds.innerText}`;
+  }
+  if (minutes.innerText < 10) {
+    minutes.innerText = `0${minutes.innerText}`;
   }
 }
 //each time seconds hits 00
