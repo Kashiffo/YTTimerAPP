@@ -17,6 +17,9 @@ start.addEventListener("click", function () {
   } else {
     alert("already running");
   }
+  if (startTimer != undefined) {
+    onYouTubePlayerAPIReady();
+  }
 });
 
 // a function that loops every second
