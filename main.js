@@ -10,6 +10,7 @@ const longBreak = document.getElementById("js-long-break");
 let minutes = document.getElementById("js-minutes");
 let seconds = document.getElementById("js-seconds");
 let startTimer = 1;
+let breakTimer = 0;
 
 //event listeners
 start.addEventListener("click", function () {
@@ -30,6 +31,18 @@ stp.addEventListener("click", function () {
     startTimer = 1;
   }
 });
+shortBreak.addEventListener("click", function () {
+  breakTimer = 1;
+  if (breakTimer == 1) {
+    //set timer to 5 mins when main timer hits 0 mins
+  }
+});
+longBreak.addEventListener("click", function () {
+  breakTimer = 2;
+  if (breakTimer == 2) {
+    //set timer to 20 mins when main timer hits 0 mins
+  }
+});
 
 // a function that loops every second
 function countDownTimer() {
@@ -45,8 +58,14 @@ function countDownTimer() {
   if (seconds.innerText < 10) {
     seconds.innerText = `0${seconds.innerText}`;
   }
-  if (minutes.innerText < 10) {
-    minutes.innerText = `0${minutes.innerText}`;
+  // if (minutes.innerText < 10) {
+  //   minutes.innerText = `0${minutes.innerText}`;
+  // }
+  if (minutes.innerText == 00 && seconds.innerText == 00) {
+    //break timer
+    // function breakTimer()
+    //   minutes.innerText = 4;
+    //   seconds.innerText = 59;
   }
 }
 //each time seconds hits 00
