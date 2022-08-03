@@ -9,17 +9,16 @@ const longBreak = document.getElementById("js-long-break");
 //timer dom elements
 let minutes = document.getElementById("js-minutes");
 let seconds = document.getElementById("js-seconds");
-let startTimer = undefined;
+let startTimer = 1;
 
 //event listeners
 start.addEventListener("click", function () {
-  if (startTimer === undefined) {
+  if (startTimer === 1) {
     startTimer = setInterval(countDownTimer, 1000);
-  }
-  if (startTimer != undefined) {
+  } else if (startTimer != 1) {
     alert("already running");
   }
-  if (startTimer != undefined) {
+  if (startTimer != 1) {
     player.playVideo();
   }
 });
@@ -27,8 +26,8 @@ start.addEventListener("click", function () {
 stp.addEventListener("click", function () {
   clearInterval(startTimer);
   player.pauseVideo();
-  if (startTimer != undefined) {
-    startTimer = undefined;
+  if (startTimer != 1) {
+    startTimer = 1;
   }
 });
 
