@@ -26,6 +26,7 @@ start.addEventListener("click", function () {
 
 stp.addEventListener("click", function () {
   clearInterval(startTimer);
+  player.pauseVideo();
   if (startTimer != undefined) {
     startTimer = undefined;
   }
