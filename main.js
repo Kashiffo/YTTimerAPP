@@ -17,10 +17,6 @@ start.addEventListener("click", function () {
   } else {
     alert("already running");
   }
-
-  if (startTimer != undefined) {
-    onYouTubePlayerAPIReady();
-  }
 });
 
 // a function that loops every second
@@ -32,6 +28,9 @@ function countDownTimer() {
   } else if (minutes.innerText != 0 && seconds.innerText == 00) {
     seconds.innerText = 59;
     minutes.innerText--;
+  }
+  if (minutes.innerText == 24) {
+    onYouTubePlayerAPIReady();
   }
 }
 //each time seconds hits 00
