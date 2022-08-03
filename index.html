@@ -46,9 +46,18 @@
       </div>
     </main>
     <!-- Youtube div -->
-    <div id="player" style="position: absolute; top: 100px; left: 100px"></div>
+
+    <!-- Make sure ?enablejsapi=1 is in URL -->
+
+    <iframe
+      id="video"
+      src="https://www.youtube.com/embed/9eJ7UHoKLG0?enablejsapi=1&html5=1&mute=0&autoplay=0"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+    <!-- <div id="player" style="position: absolute; top: 100px; left: 100px"></div>
     <div id="info">loading...</div>
-    <script src="http://www.youtube.com/player_api"></script>
+    <script src="http://www.youtube.com/player_api"></script> -->
     <div class="hidden">
       <audio src="backtowork.mp3" data-sound="pomodoro"></audio>
       <audio src="break.mp3" data-sound="shortBreak"></audio>

@@ -18,7 +18,7 @@ start.addEventListener("click", function () {
     alert("already running");
   }
   if (startTimer != undefined) {
-    onYouTubePlayerAPIReady();
+    player.playVideo();
   }
 });
 
@@ -49,22 +49,45 @@ function countDownTimer() {
 
 // Youtube Player Lofii
 
-let info = document.getElementById("info");
-function onYouTubePlayerAPIReady() {
-  var player = new YT.Player("player", {
-    videoId: "uCEv2NMr46E", // this is the id of the video at youtube (the stuff after "?v=")
-    loop: true,
-    events: {
-      onReady: function (e) {
-        info.innerHTML = "video is loaded"; // checks the state
-        e.target.playVideo();
-      },
+// let info = document.getElementById("info");
+// function onYouTubePlayerAPIReady() {
+//   var player = new YT.Player("player", {
+//     videoId: "uCEv2NMr46E", // this is the id of the video at youtube (the stuff after "?v=")
+//     loop: true,
+//     events: {
+//       onReady: function (e) {
+//         info.innerHTML = "video is loaded"; // checks the state
+//         e.target.playVideo();
+//         onPlayerReady;
+//       },
 
-      onStateChange: function (event) {
-        if (event.data === 1) {
-          info.innerHTML = "video started playing";
-        }
-      },
+//       onStateChange: function (event) {
+//         if (event.data === 1) {
+//           info.innerHTML = "video started playing";
+//         }
+//       },
+//     },
+//   });
+// }
+
+// global variable for the player
+var player;
+
+// this function gets called when API is ready to use
+function onYouTubePlayerAPIReady() {
+  // create the global player from the specific iframe (#video)
+  player = new YT.Player("video", {
+    events: {
+      // call this function when player is ready to use
+      onReady: onPlayerReady,
     },
   });
 }
+
+function onPlayerReady(event) {}
+
+// Inject YouTube API script
+var tag = document.createElement("script");
+tag.src = "https://www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
