@@ -1,6 +1,7 @@
 //buttons
 
 const start = document.getElementById("js-btn");
+const stp = document.getElementById("js-stpBtn");
 const pomodoro = document.getElementById("js-pomodoro");
 const shortBreak = document.getElementById("js-short-break");
 const longBreak = document.getElementById("js-long-break");
@@ -14,11 +15,19 @@ let startTimer = undefined;
 start.addEventListener("click", function () {
   if (startTimer === undefined) {
     startTimer = setInterval(countDownTimer, 1000);
-  } else {
+  }
+  if (startTimer != undefined) {
     alert("already running");
   }
   if (startTimer != undefined) {
     player.playVideo();
+  }
+});
+
+stp.addEventListener("click", function () {
+  clearInterval(startTimer);
+  if (startTimer != undefined) {
+    startTimer = undefined;
   }
 });
 
