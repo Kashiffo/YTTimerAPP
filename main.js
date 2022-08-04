@@ -5,14 +5,23 @@ const stp = document.getElementById("js-stpBtn");
 const pomodoro = document.getElementById("js-pomodoro");
 const shortBreak = document.getElementById("js-short-break");
 const longBreak = document.getElementById("js-long-break");
+let lofiSong = document.getElementsByTagName("video");
 
 //timer dom elements
 let minutes = document.getElementById("js-minutes");
 let seconds = document.getElementById("js-seconds");
 let startTimer = 1;
-let breakTimer = 0;
+let breakTimer = 1;
 
 //event listeners
+shortBreak.addEventListener("click", function () {
+  breakTimer = 1;
+  console.log("short");
+});
+longBreak.addEventListener("click", function () {
+  breakTimer = 2;
+  console.log("long");
+});
 start.addEventListener("click", function () {
   if (startTimer === 1) {
     startTimer = setInterval(countDownTimer, 1000);
@@ -20,6 +29,7 @@ start.addEventListener("click", function () {
     alert("already running");
   }
   if (startTimer != 1) {
+    player.loadVideoById("9eJ7UHoKLG0"); // insert video id
     player.playVideo();
   }
 });
@@ -28,26 +38,14 @@ stp.addEventListener("click", function () {
   clearInterval(startTimer);
   player.pauseVideo();
   if (startTimer != 1) {
-    startTimer = 1;
-  }
-});
-shortBreak.addEventListener("click", function () {
-  breakTimer = 1;
-  if (breakTimer == 1) {
-    //set timer to 5 mins when main timer hits 0 mins
-  }
-});
-longBreak.addEventListener("click", function () {
-  breakTimer = 2;
-  if (breakTimer == 2) {
-    //set timer to 20 mins when main timer hits 0 mins
+    startTimer = 0;
   }
 });
 
 // a function that loops every second
 function countDownTimer() {
   //take the value of the minutes and reduce them by 1
-
+  let pauseFor = 0;
   if (seconds.innerText != 0) {
     seconds.innerText--;
   } else if (minutes.innerText != 0 && seconds.innerText == 00) {
@@ -58,49 +56,42 @@ function countDownTimer() {
   if (seconds.innerText < 10) {
     seconds.innerText = `0${seconds.innerText}`;
   }
-  // if (minutes.innerText < 10) {
-  //   minutes.innerText = `0${minutes.innerText}`;
-  // }
+  if (minutes.innerText == 00 && seconds.innerText == 02) {
+    player.loadVideoById("");
+
+    //pause old video
+  }
   if (minutes.innerText == 00 && seconds.innerText == 00) {
     //break timer
-    // function breakTimer()
-    //   minutes.innerText = 4;
-    //   seconds.innerText = 59;
+    if (breakTimer == 1) {
+      seconds.innerText = "00";
+      minutes.innerText = 05;
+      setTimeout(function () {
+        player.loadVideoById("uCEv2NMr46E"); // insert video id;
+      }, 3000);
+      player.playVideo();
+    }
+    if (breakTimer == 2) {
+      seconds.innerText = "00";
+      minutes.innerText = 15;
+      setTimeout(function () {
+        player.loadVideoById("hZmFWMLvhZ0"); // insert video id;
+      }, 3000);
+      player.playVideo();
+
+      // setTimeout(function () {
+      //   player.loadVideoById("hZmFWMLvhZ0"); // insert video id;
+      // }, 3000);
+      // player.playVideo();
+
+      // setTimeout(function () {
+      //   player.playVideo();
+      // }, 3000);
+    }
   }
 }
-//each time seconds hits 00
-
-//take the value of the seconds and reduce them by 1/second
-
-//break timer
-//if mins and secs == 00 the set mins and seconds to short or long break
-
-// Youtube Player Lofii
-
-// let info = document.getElementById("info");
-// function onYouTubePlayerAPIReady() {
-//   var player = new YT.Player("player", {
-//     videoId: "uCEv2NMr46E", // this is the id of the video at youtube (the stuff after "?v=")
-//     loop: true,
-//     events: {
-//       onReady: function (e) {
-//         info.innerHTML = "video is loaded"; // checks the state
-//         e.target.playVideo();
-//         onPlayerReady;
-//       },
-
-//       onStateChange: function (event) {
-//         if (event.data === 1) {
-//           info.innerHTML = "video started playing";
-//         }
-//       },
-//     },
-//   });
-// }
-
-// global variable for the player
+//YOUTUBE PLAYER
 var player;
-
 // this function gets called when API is ready to use
 function onYouTubePlayerAPIReady() {
   // create the global player from the specific iframe (#video)
@@ -111,7 +102,7 @@ function onYouTubePlayerAPIReady() {
     },
   });
 }
-
+//not sure but wont work without it
 function onPlayerReady(event) {}
 
 // Inject YouTube API script
