@@ -83,17 +83,10 @@ function countDownTimer() {
         player.loadVideoById("hZmFWMLvhZ0"); // insert video id;
       }, 3000);
       player.playVideo();
-
-      // setTimeout(function () {
-      //   player.loadVideoById("hZmFWMLvhZ0"); // insert video id;
-      // }, 3000);
-      // player.playVideo();
-
-      // setTimeout(function () {
-      //   player.playVideo();
-      // }, 3000);
     }
   }
+
+  // add alarm to come on via loop for once persecond
 }
 //YOUTUBE PLAYER
 var player;
