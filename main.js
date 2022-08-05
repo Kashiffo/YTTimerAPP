@@ -2,7 +2,7 @@
 
 const start = document.getElementById("js-btn");
 const stp = document.getElementById("js-stpBtn");
-const pomodoro = document.getElementById("js-pomodoro");
+const breakNow = document.getElementById("js-break-now");
 const shortBreak = document.getElementById("js-short-break");
 const longBreak = document.getElementById("js-long-break");
 
@@ -15,10 +15,16 @@ let breakTimer = 1;
 //event listeners
 shortBreak.addEventListener("click", function () {
   breakTimer = 1;
+  document.getElementById("js-short-break").classList.add("active");
+  document.getElementById("js-long-break").classList.remove("active");
+
   console.log("short");
 });
 longBreak.addEventListener("click", function () {
   breakTimer = 2;
+  document.getElementById("js-long-break").classList.add("active");
+  document.getElementById("js-short-break").classList.remove("active");
+
   console.log("long");
 });
 start.addEventListener("click", function () {
@@ -37,8 +43,13 @@ stp.addEventListener("click", function () {
   clearInterval(startTimer);
   player.pauseVideo();
   if (startTimer != 1) {
-    startTimer = 0;
+    startTimer = 1;
   }
+});
+breakNow.addEventListener("click", function () {
+  minutes.innerText = "00";
+  seconds.innerText = "05";
+  player.pauseVideo();
 });
 
 // a function that loops every second
@@ -63,9 +74,6 @@ function countDownTimer() {
   if (minutes.innerText == 00 && seconds.innerText == 00) {
     //break timer
     if (breakTimer == 1) {
-      document.getElementById("js-short-break").classList.add("active");
-      document.getElementById("js-long-break").classList.remove("active");
-      document.getElementById("js-pomodoro").classList.remove("active");
       seconds.innerText = "00";
       minutes.innerText = 05;
       setTimeout(function () {
@@ -74,9 +82,6 @@ function countDownTimer() {
       player.playVideo();
     }
     if (breakTimer == 2) {
-      document.getElementById("js-long-break").classList.add("active");
-      document.getElementById("js-short-break").classList.remove("active");
-      document.getElementById("js-pomodoro").classList.remove("active");
       seconds.innerText = "00";
       minutes.innerText = 15;
       setTimeout(function () {
