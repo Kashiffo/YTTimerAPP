@@ -34,7 +34,7 @@ start.addEventListener("click", function () {
     alert("already running");
   }
   if (startTimer != 1) {
-    player.loadVideoById("9eJ7UHoKLG0"); // insert video id
+    player.loadVideoById("b7DrwqoHAGA"); // insert video id
     player.playVideo();
   }
 });
@@ -94,7 +94,7 @@ function countDownTimer() {
   // add alarm to come on via loop for once persecond
 }
 //YOUTUBE PLAYER
-var player;
+let player;
 // this function gets called when API is ready to use
 function onYouTubePlayerAPIReady() {
   // create the global player from the specific iframe (#video)
