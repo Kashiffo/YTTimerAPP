@@ -78,7 +78,7 @@ function countDownTimer() {
       minutes.innerText = 05;
       setTimeout(function () {
         player.loadVideoById("uCEv2NMr46E"); // insert video id;
-      }, 3000);
+      }, 1000);
       player.playVideo();
     }
     if (breakTimer == 2) {
@@ -86,7 +86,7 @@ function countDownTimer() {
       minutes.innerText = 15;
       setTimeout(function () {
         player.loadVideoById("hZmFWMLvhZ0"); // insert video id;
-      }, 3000);
+      }, 1000);
       player.playVideo();
     }
   }
