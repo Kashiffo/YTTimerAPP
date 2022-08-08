@@ -48,7 +48,7 @@ stp.addEventListener("click", function () {
 });
 breakNow.addEventListener("click", function () {
   minutes.innerText = "00";
-  seconds.innerText = "05";
+  seconds.innerText = "03";
   player.pauseVideo();
 });
 
@@ -66,7 +66,7 @@ function countDownTimer() {
   if (seconds.innerText < 10) {
     seconds.innerText = `0${seconds.innerText}`;
   }
-  if (minutes.innerText == 00 && seconds.innerText == 02) {
+  if (minutes.innerText == 00 && seconds.innerText == 01) {
     player.loadVideoById("");
 
     //pause old video
